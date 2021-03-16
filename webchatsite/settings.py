@@ -25,7 +25,9 @@ SECRET_KEY = 'bz*ujn#i^o^k3g2knl^7=+$u^4_3steo!t24x97#jf&i70no2s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'webchatsite.herokuapp.com',
+]
 
 
 # Application definition
