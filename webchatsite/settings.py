@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'webchatsite.herokuapp.com',
+    'webchatapp-op92.onrender.com',
     '127.0.0.1',
     'localhost'
 ]
@@ -127,9 +128,9 @@ STATIC_URL = '/static/'
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+            "hosts": [(os.environ.get('REDIS_URL', 'redis://localhost'), 6379)],
         },
     },
 }

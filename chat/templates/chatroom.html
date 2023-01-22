@@ -88,7 +88,7 @@
             const roomName = JSON.parse(document.getElementById('room-name').textContent);
             console.log(roomName);
             const chatSocket = new WebSocket(
-                'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
+                'wss://' + window.location.host + '/ws/chat/' + roomName + '/'
             );
 
             chatSocket.onmessage = function(e) {
