@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'webchatsite.herokuapp.com',
+    '127.0.0.1',
+    'localhost'
 ]
 
 
@@ -126,12 +128,21 @@ STATIC_URL = '/static/'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels.layers.InMemoryChannelLayer',
-    },
-    'CONFIG': {
-        "hosts": [('redis', 6379)],
+        'CONFIG': {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
     },
 }
 
+CACHES = {
+    "default": {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        }
+    }
+}
 connected_users = {}
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
