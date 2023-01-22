@@ -89,9 +89,7 @@
             console.log(roomName);
             let chatSocket = undefined;
             try{
-                chatSocket = new WebSocket(
-                    'wss://' + window.location.host + '/ws/chat/' + roomName + '/'
-                );
+                chatSocket = new WebSocket(`wss://${window.location.host}+/ws/chat/${roomName}/`);
             }catch(e) {
                 console.log(e)
                 console.log(e.message)
