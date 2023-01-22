@@ -87,9 +87,15 @@
 
             const roomName = JSON.parse(document.getElementById('room-name').textContent);
             console.log(roomName);
-            const chatSocket = new WebSocket(
-                'wss://' + window.location.host + '/ws/chat/' + roomName + '/'
-            );
+            let chatSocket = undefined;
+            try{
+                chatSocket = new WebSocket(
+                    'wss://' + window.location.host + '/ws/chat/' + roomName + '/'
+                );
+            }catch(e) {
+                console.log(e)
+                console.log(e.message)
+            }
 
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
