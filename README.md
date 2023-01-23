@@ -9,3 +9,6 @@ How To Use:
 4. Now, You can start sending messages
 
 + Extra: Currently, you can rename anytime you want during chatroom session. The chatroom messages wont be stored in any database, so newly joined member wont be able to see old messages in that chatroom.
+
+
+WARNING: Currently there is no support for Room Names having space! so try to name a room without space.
